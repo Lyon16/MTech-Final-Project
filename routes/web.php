@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\SalesController;
+use App\Http\Controllers\DashboardController;
 
 // =====================================
 // PUBLIC AUTHENTICATION ROUTES
@@ -28,9 +29,8 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
 
     // Dashboard
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])
+    ->name('dashboard');
 
     // Customer Management
     Route::resource('customers', CustomerController::class);
