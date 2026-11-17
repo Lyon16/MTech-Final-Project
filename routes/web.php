@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -6,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\SalesController;
 
 // =====================================
 // PUBLIC AUTHENTICATION ROUTES
@@ -13,11 +13,9 @@ use App\Http\Controllers\StaffController;
 
 Route::middleware('guest')->group(function () {
 
-    // Login Page
     Route::get('/login', [AuthController::class, 'showLogin'])
         ->name('login');
 
-    // Process Login
     Route::post('/login', [AuthController::class, 'login'])
         ->name('login.submit');
 
@@ -42,6 +40,19 @@ Route::middleware('auth')->group(function () {
 
     // Staff Management
     Route::resource('staff', StaffController::class);
+
+    // Sales History
+    Route::get('/sales', [SalesController::class, 'index'])
+        ->name('sales.index');
+
+    // Record Sale Form
+    Route::get('/sales/create', [SalesController::class, 'create'])
+        ->name('sales.create');
+
+    // Process Sale
+    Route::post('/sales', [SalesController::class, 'store'])
+        ->name('sales.store');
+
     // Logout
     Route::post('/logout', [AuthController::class, 'logout'])
         ->name('logout');
