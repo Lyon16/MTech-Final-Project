@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StaffController;
 
 // =====================================
 // PUBLIC AUTHENTICATION ROUTES
@@ -39,6 +40,8 @@ Route::middleware('auth')->group(function () {
     // Product Management
     Route::resource('products', ProductController::class);
 
+    // Staff Management
+    Route::resource('staff', StaffController::class);
     // Logout
     Route::post('/logout', [AuthController::class, 'logout'])
         ->name('logout');
