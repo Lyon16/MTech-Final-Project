@@ -38,8 +38,9 @@ Route::middleware('auth')->group(function () {
     // Product Management
     Route::resource('products', ProductController::class);
 
-    // Staff Management
-    Route::resource('staff', StaffController::class);
+    // Administrator-only Staff Management
+    Route::resource('staff', StaffController::class)
+        ->middleware('can:manage-staff');
 
     // Sales History
     Route::get('/sales', [SalesController::class, 'index'])

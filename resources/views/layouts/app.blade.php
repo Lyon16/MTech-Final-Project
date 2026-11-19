@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,35 +59,56 @@
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
 
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="{{ route('dashboard') }}">
             POS Management System
         </a>
 
         <div class="navbar-nav ms-auto">
-            <a class="nav-link" href="/">Dashboard</a>
-            <a class="nav-link" href="/products">Products</a>
-            <a class="nav-link" href="/customers">Customers</a>
-            <a class="nav-link" href="/staff">Staff</a>
-            <a class="nav-link" href="/sales/create">Record Sale</a>
-            
-@auth
-    <span class="navbar-text text-light me-3">
-        {{ auth()->user()->full_name }}
-    </span>
-@endauth
 
-@auth
-    <form action="{{ route('logout') }}"
-          method="POST"
-          class="d-flex align-items-center ms-lg-3">
-        @csrf
+            <a class="nav-link"
+               href="{{ route('dashboard') }}">
+                Dashboard
+            </a>
 
-        <button type="submit"
-                class="btn btn-outline-light btn-sm">
-            Logout
-        </button>
-    </form>
-@endauth
+            <a class="nav-link"
+               href="{{ route('products.index') }}">
+                Products
+            </a>
+
+            <a class="nav-link"
+               href="{{ route('customers.index') }}">
+                Customers
+            </a>
+
+            {{-- Administrator-only Staff Management --}}
+            @can('manage-staff')
+                <a class="nav-link"
+                   href="{{ route('staff.index') }}">
+                    Staff
+                </a>
+            @endcan
+
+            <a class="nav-link"
+               href="{{ route('sales.create') }}">
+                Record Sale
+            </a>
+
+            @auth
+                <span class="navbar-text text-light me-3">
+                    {{ auth()->user()->full_name }}
+                </span>
+
+                <form action="{{ route('logout') }}"
+                      method="POST"
+                      class="d-flex align-items-center ms-lg-3">
+                    @csrf
+
+                    <button type="submit"
+                            class="btn btn-outline-light btn-sm">
+                        Logout
+                    </button>
+                </form>
+            @endauth
 
         </div>
 

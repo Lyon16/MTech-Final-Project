@@ -101,10 +101,12 @@
                 Manage Customers
             </a>
 
+            @can('manage-staff')
             <a href="{{ route('staff.index') }}"
                class="btn btn-outline-primary">
                 Manage Staff
             </a>
+            @endcan
 
             <a href="{{ route('sales.create') }}"
                class="btn btn-primary">

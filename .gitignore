@@ -28,3 +28,4 @@ Thumbs.db
 /storage/logs/*
 /bootstrap/cache/*.php
 .env.testing
+.env.migrationtest
