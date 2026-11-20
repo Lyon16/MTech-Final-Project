@@ -31,11 +31,15 @@ class StaffController extends Controller
     {
         $validated = $request->validate([
             'username' => [
-                'required', 'string', 'max:50',
-                'alpha_dash', 'unique:users,username',
+            'required',
+            'string',
+            'max:50',
+            'alpha_dash',
+            Rule::notIn(['admin']),
+            Rule::unique('users', 'username'),
             ],
             'full_name' => ['required', 'string', 'max:100'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:12', 'confirmed'],
             'avatar' => [
                 'nullable',
                 File::image()->types(['jpg', 'jpeg', 'png'])->max('2mb'),
@@ -77,6 +81,14 @@ class StaffController extends Controller
 
     public function update(Request $request, User $staff)
     {
+        if ($staff->username === 'admin' && $request->input('username') !== 'admin') {
+            return redirect()
+                ->back()
+                ->withInput($request->except(['password', 'password_confirmation']))
+                ->withErrors([
+                    'username' => 'The administrator username cannot be changed.',
+                ]);
+        }
         $validated = $request->validate([
             'username' => [
                 'required',
@@ -86,7 +98,7 @@ class StaffController extends Controller
                 Rule::unique('users', 'username')->ignore($staff->id),
             ],
             'full_name' => ['required', 'string', 'max:100'],
-            'password' => ['nullable', 'string', 'min:8', 'confirmed'],
+            'password' => ['nullable', 'string', 'min:12', 'confirmed'],
             'avatar' => [
                 'nullable',
                 File::image()->types(['jpg', 'jpeg', 'png'])->max('2mb'),

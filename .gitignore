@@ -29,3 +29,11 @@ Thumbs.db
 /bootstrap/cache/*.php
 .env.testing
 .env.migrationtest
+# Production deployment files
+/deploy-package/
+/laravel-pos-upload.zip
+/zip-test.zip
+
+# Temporary development scripts
+/generate-hash.php
+/test-admin-validation.php

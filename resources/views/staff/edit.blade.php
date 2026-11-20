@@ -73,7 +73,7 @@
                        id="password"
                        name="password"
                        class="form-control @error('password') is-invalid @enderror"
-                       minlength="8"
+                       minlength="12"
                        autocomplete="new-password">
 
                 @error('password')
@@ -84,7 +84,7 @@
 
                 <small class="text-muted">
                     Leave blank to keep the current password.
-                    Minimum 8 characters.
+                    Minimum 12 characters.
                 </small>
             </div>
 

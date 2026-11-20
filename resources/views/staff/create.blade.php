@@ -70,7 +70,7 @@
                        id="password"
                        name="password"
                        class="form-control @error('password') is-invalid @enderror"
-                       minlength="8"
+                       minlength="12"
                        autocomplete="new-password"
                        required>
 
@@ -81,7 +81,7 @@
                 @enderror
 
                 <small class="text-muted">
-                    Use at least 8 characters.
+                    Use at least 12 characters.
                 </small>
             </div>
 
@@ -94,7 +94,7 @@
                        id="password_confirmation"
                        name="password_confirmation"
                        class="form-control"
-                       minlength="8"
+                       minlength="12"
                        autocomplete="new-password"
                        required>
             </div>
