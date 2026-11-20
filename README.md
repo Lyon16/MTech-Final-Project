@@ -1,59 +1,305 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+MTech POS System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A web-based Point of Sale (POS) and Inventory Management System developed using Laravel 12, PHP, and MySQL.
 
-## About Laravel
+This project provides a centralized platform for managing products, customers, staff accounts, sales transactions, and inventory. It was developed as an academic project to demonstrate database integration, CRUD operations, authentication, file uploads, and web application deployment.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Live Website
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Live Application: https://mtech-pos.ct.ws/
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+GitHub Repository: https://github.com/Lyon16/MTech-Final-Project
 
-## Learning Laravel
+The live application requires a registered staff account to access management features. Login credentials are not publicly provided.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Technologies Used
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Backend: PHP, Laravel 12
 
-## Laravel Sponsors
+Database: MySQL
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Frontend: Blade Templates, HTML, CSS, Bootstrap, JavaScript
 
-### Premium Partners
+Local Development: XAMPP
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Version Control: Git and GitHub
 
-## Contributing
+Web Hosting: InfinityFree
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Database Management: phpMyAdmin
 
-## Code of Conduct
+System Features
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+1. Product Management
 
-## Security Vulnerabilities
+View available products.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Add new products.
 
-## License
+Edit product information.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Delete products.
+
+Upload product images.
+
+Prepare uploaded images for display.
+
+Track available stock quantities.
+
+2. Customer Management
+
+Create customer records.
+
+View customer information.
+
+Update customer details.
+
+Delete customer records.
+
+3. Staff Management
+
+Create staff accounts.
+
+View staff information.
+
+Update staff account details.
+
+Delete eligible staff accounts.
+
+Upload and display staff avatars.
+
+Automatically hash staff passwords.
+
+Require a minimum of 12 characters for new passwords.
+
+Restrict staff management to authorized administrators.
+
+4. Authentication and Authorization
+
+Staff login and logout.
+
+Authentication-protected management pages.
+
+Administrator-only Staff Management.
+
+Restricted access for regular staff.
+
+Session protection for logged-out users.
+
+5. Sales Management
+
+Record product sales.
+
+Select a product and quantity.
+
+Optionally assign a customer.
+
+Support walk-in customers.
+
+Calculate transaction totals.
+
+Automatically deduct sold quantities from inventory.
+
+Reject sales when requested quantities exceed available stock.
+
+6. Sales History
+
+Display recorded transactions, including:
+
+Product
+
+Customer, if applicable
+
+Staff member who recorded the sale
+
+Quantity sold
+
+Total transaction price
+
+Transaction date
+
+Historical transaction totals remain unchanged when product prices are updated.
+
+Database
+
+The application uses MySQL with Laravel Eloquent models and relationships.
+
+Main database tables include:
+
+users
+
+customers
+
+products
+
+sales
+
+The application also uses Laravel database migrations to manage the database structure.
+
+Local Installation
+
+Prerequisites
+
+PHP with the extensions required by the project
+
+Composer
+
+MySQL
+
+XAMPP or another compatible local development environment
+
+Git
+
+Installation Steps
+
+Clone the repository:
+
+git clone https://github.com/Lyon16/MTech-Final-Project.git
+
+Navigate to the project directory:
+
+cd MTech-Final-Project
+
+Install PHP dependencies:
+
+composer install
+
+Create a local environment configuration:
+
+cp .env.example .env
+
+On Windows, the file may also be copied manually.
+
+Configure the local MySQL connection in .env.
+
+Generate the Laravel application key:
+
+php artisan key:generate
+
+Create the required database and run migrations:
+
+php artisan migrate
+
+Start the Laravel development server:
+
+php artisan serve
+
+Open the local application using the address displayed by Laravel.
+
+A staff account must be created through an authorized setup process before logging in.
+
+Deployment
+
+The application is deployed on InfinityFree using PHP and MySQL.
+
+The production deployment includes:
+
+Production environment configuration
+
+Composer dependencies
+
+Laravel application files
+
+Protected application directories
+
+Configured public entry point
+
+MySQL database integration
+
+Product and avatar image storage
+
+Production credentials, application encryption keys, and environment configuration files are excluded from the GitHub repository.
+
+Functional Testing
+
+The following functions were tested on the live InfinityFree deployment:
+
+Feature
+
+Result
+
+Administrator login
+
+Passed
+
+Regular staff login
+
+Passed
+
+Administrator access restrictions
+
+Passed
+
+Logout and session protection
+
+Passed
+
+Customer CRUD
+
+Passed
+
+Product CRUD
+
+Passed
+
+Staff creation and deletion
+
+Passed
+
+Product image upload
+
+Passed
+
+Staff avatar upload
+
+Passed
+
+Sales recording
+
+Passed
+
+Optional customer selection
+
+Passed
+
+Automatic inventory deduction
+
+Passed
+
+Insufficient-stock validation
+
+Passed
+
+Sales history
+
+Passed
+
+Historical transaction total preservation
+
+Passed
+
+Security Features
+
+Password hashing through Laravel's Eloquent hashed attribute cast.
+
+Server-side input validation.
+
+Minimum 12-character staff password requirement.
+
+Authentication middleware on protected routes.
+
+Administrator authorization for staff management.
+
+Protected product and avatar image-serving routes.
+
+Environment files excluded from version control.
+
+Project Purpose
+
+This project demonstrates the practical application of web development concepts, relational database design, Laravel MVC architecture, authentication, CRUD operations, file handling, inventory management, and deployment to a live web hosting environment.
+
+Project Status
+
+Core development and deployment completed.
+
+The application has passed its main functional tests and is accessible through its live InfinityFree website.
