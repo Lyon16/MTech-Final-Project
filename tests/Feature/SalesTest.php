@@ -117,4 +117,27 @@ class SalesTest extends TestCase
         $response->assertSee('Walk-in Customer');
         $response->assertSee('5,000.00');
     }
+
+    public function test_product_with_sales_can_be_deleted_without_deleting_sales(): void
+    {
+        $this->post(route('sales.store'), [
+            'product_id' => $this->product->id,
+            'quantity' => 2,
+        ]);
+
+        $saleId = DB::table('sales')->value('id');
+
+        $response = $this->delete(route('products.destroy', $this->product));
+
+        $response->assertRedirect(route('products.index'));
+        $this->assertDatabaseMissing('products', ['id' => $this->product->id]);
+        $this->assertDatabaseHas('sales', [
+            'id' => $saleId,
+            'product_id' => null,
+        ]);
+
+        $this->get(route('sales.index'))
+            ->assertOk()
+            ->assertSee('Deleted Product');
+    }
 }

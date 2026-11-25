@@ -43,7 +43,7 @@
                             <td>{{ $sale->id }}</td>
 
                             <td>
-                                {{ $sale->product?->name ?? 'Unavailable Product' }}
+                                {{ $sale->product?->name ?? 'Deleted Product' }}
                             </td>
 
                             <td>
