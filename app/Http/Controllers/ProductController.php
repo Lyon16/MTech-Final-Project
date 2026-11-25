@@ -125,7 +125,7 @@ class ProductController extends Controller
             ->with('success', 'Product updated successfully!');
     }
 
-    // Delete product if it has no sales history
+    // Delete product while preserving any sales history
     public function destroy(Product $product)
     {
         $image = DB::transaction(function () use ($product) {
@@ -133,24 +133,12 @@ class ProductController extends Controller
                 ->lockForUpdate()
                 ->findOrFail($product->id);
 
-            if ($product->sales()->exists()) {
-                return false;
-            }
-
             $image = $product->image;
 
             $product->delete();
 
             return $image ?? '';
         });
-
-        if ($image === false) {
-            return redirect()->route('products.index')
-                ->with(
-                    'error',
-                    'Products with sales history cannot be deleted.'
-                );
-        }
 
         // Remove product image after successful deletion
         if ($image) {
