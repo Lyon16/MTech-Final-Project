@@ -37,3 +37,4 @@ Thumbs.db
 # Temporary development scripts
 /generate-hash.php
 /test-admin-validation.php
+.env.deletiontest
